@@ -1,0 +1,1019 @@
+#include <GL/glut.h> 
+#include <math.h>
+
+typedef struct 
+{ 
+	float r; 
+	float g; 
+	float b; 
+} color_t;
+
+typedef struct 
+{ 
+	float x, y; 
+} Point2D_t;
+
+void setColor(color_t col) 
+{ 
+	glColor3f(col.r, col.g, col.b); 
+}
+
+void drawPolyline(Point2D_t pnt[], int n) 
+{ 
+	int i;   
+	glBegin(GL_LINE_LOOP);    
+	for (i = 0; i < n; i++) { 
+		glVertex2f(pnt[i].x, pnt[i].y); 
+	}  
+	glEnd(); 
+}
+
+void fillPolygon(Point2D_t pnt[], int n, color_t color) 
+{ 
+	int i;  
+	setColor(color);  
+	glBegin(GL_POLYGON);  
+	for (i = 0; i < n; i++) { 
+		glVertex2f(pnt[i].x, pnt[i].y); 
+	}  
+	glEnd(); 
+}
+
+void gradatePolygon(Point2D_t pnt[], int n, color_t color[]) 
+{ 
+	int i;    
+	glBegin(GL_POLYGON);  
+	for (i = 0; i < n; i++) { 
+		setColor(color[i]);   
+		glVertex2f(pnt[i].x, pnt[i].y); }  
+	glEnd(); 
+}
+
+void drawDots(int x1, int y1)
+{
+	glBegin(GL_POINTS);
+	glVertex2i(x1, y1);
+	glEnd();
+}
+
+void userdraw()
+{
+	color_t birudonker1 = { 0,0.3,0.5 };  
+	color_t birudonker2 = { 0,0.4,0.6 };
+	color_t birudonker3 = { 0,0.5,0.7 };
+	color_t birudonker4 = { 0,0.6,0.8 };
+	color_t biru1 = { 0,0.7,0.9 };
+	color_t biru2 = { 0,0.8,1 };
+	color_t biru4 = { 0.8,1,1 };
+	color_t biru8 = { 0.4,1,1 };
+	color_t hitam = { 0,0,0 };
+	color_t hitam2 = { 0,0,0.2 };
+	color_t merah4 = { 0.75,0.29,0.29 };
+	color_t cream1 = { 0.55,0.33,0.14 };
+	color_t cream2 = { 0.75,0.52,0.25 };
+	color_t cream3 = { 0.87,0.67,0.41 };
+	color_t cream4 = { 0.94,0.76,0.49 };
+	color_t cream5 = { 1,0.85,0.67 };
+	color_t gradasicream1[4] = { {0.87,0.67,0.41},{0.94,0.76,0.49},{1,0.85,0.67},{0.94,0.76,0.49} };
+	color_t gradasicream2[5] = { {0.87,0.67,0.41},{0.94,0.76,0.49},{1,0.85,0.67},{0.94,0.76,0.49},{1,0.85,0.67} };
+	color_t gradasicream3[6] = { {0.87,0.67,0.41},{0.94,0.76,0.49},{0.94,0.76,0.49},{0.94,0.76,0.49},{0.94,0.76,0.49},{0.87,0.67,0.41} };
+	color_t gradasicream4[7] = { {0.94,0.76,0.49},{1,0.85,0.67},{1,0.85,0.67},{1,0.85,0.67},{1,0.85,0.67},{0.94,0.76,0.49},{1,0.85,0.67} };
+	color_t gradasibiru1[4] = { {0,0.6,0.8},{0,0.7,0.9},{0,0.8,1},{0.4,1,1} };
+	color_t gradasibiru2[4] = { {0.4,1,1},{0,0.8,1},{0.4,1,1},{0.8,1,1} };
+	color_t gradasibiru3[3] = { {0,0.8,1},{0,0.7,0.9},{0.4,1,1} };
+	color_t gradasibirudonker1[3] = { {0,0.3,0.5},{0,0.4,0.6},{0,0.5,0.7} };
+	color_t gradasibirudonker2[3] = { {0,0.4,0.6},{0,0.5,0.7},{0,0.6,0.8} };
+	//rambut1(e,d,c,h2,l5,k5)
+	Point2D_t rambut1[6] = { {-151,352},{-71,391},{67,390},{103,344},{96,305},{20,304} };
+	fillPolygon(rambut1, 6, birudonker1);
+	setColor(birudonker1);  
+	drawPolyline(rambut1, 6);
+
+	//rambut2(e,j5,i5)
+	Point2D_t rambut2[3] = { {-151,352},{-55,306},{-118,304} };
+	fillPolygon(rambut2, 3, birudonker1);
+	//rambut2_1(e,i5,h5,f)
+	Point2D_t rambut2_1[4] = { {-151,352},{-118,304},{-203,168},{-225,181} };
+	fillPolygon(rambut2_1, 4, birudonker1);
+	//rambut2_2(f,h5,g)
+	Point2D_t rambut2_2[3] = { {-225,181},{-203,168},{-267,166} };
+	fillPolygon(rambut2_2, 3, birudonker1);
+
+	//rambut3(g,h,p,r,s,w,h1,h5)
+	Point2D_t rambut3[8] = { {-267,166},{-191,128},{-156,128},{-142,129},{-134,129},{-49,128},{-49,134},{-203,168} };
+	fillPolygon(rambut3, 8, birudonker3);
+	//rambut3_2(h5,h1,i1,p5,o5,l5,k5,j5,i5)
+	Point2D_t rambut3_2[9] = { {-203,168},{-49,134},{94,237},{93,268},{93,282},{96,305},{20,304},{-55,306},{-118,304} };
+	fillPolygon(rambut3_2, 9, birudonker3);
+	//rambut3_2(e,j5,k5)
+	Point2D_t rambut3_3[3] = { {-151,352},{-55,306},{20,304} };
+	fillPolygon(rambut3_3, 3, birudonker3);
+
+	//rambut4(l5,o5,p5,i1,j1,s5,t5)
+	Point2D_t rambut4[7] = { {96,305},{93,282},{93,268},{94,237},{155,132},{158,174},{160,240} };
+	fillPolygon(rambut4, 7, birudonker2);
+
+	//rambut5(h,i,z2,a3,u,t,q,p)
+	Point2D_t rambut5[8] = { {-191,128},{-191,79},{-173,61},{-164,56},{-156,55},{-156,99},{-156,112},{-156,128} };
+	fillPolygon(rambut5, 8, birudonker1);
+	//rambut5_2(i,z2,c3,k,j)
+	Point2D_t rambut5_2[5] = { {-191,79},{-173,61},{-173,33},{-182,22},{-217,22} };
+	fillPolygon(rambut5_2, 5, birudonker1);
+	//rambut5_3(c3,k,l,b3)
+	Point2D_t rambut5_3[4] = { {-173,33},{-182,22},{-181,13},{-164,27} };
+	fillPolygon(rambut5_3, 4, birudonker1);
+	//rambut5_4(l,m,n,o,b3)
+	Point2D_t rambut5_4[5] = { {-181,13},{-197,13},{-197,4},{-156,-38},{-164,27} };
+	fillPolygon(rambut5_4, 5, birudonker1);
+	//rambut5_5(a3,b3,o,v,u)
+	Point2D_t rambut5_5[5] = { {-164,56},{-164,27},{-156,-38},{-156,42},{-156,55} };
+	fillPolygon(rambut5_5, 5, birudonker1);
+
+	//rambut6(h2,i2,j2,k2,l2,n2,t5,l5)
+	Point2D_t rambut6[8] = { {103,344},{122,352},{138,351},{189,286},{215,209},{202,184},{160,240},{96,305} };
+	fillPolygon(rambut6, 8, birudonker1);
+	//rambut6_2(l2,n2,m2)
+	Point2D_t rambut6_2[3] = { {215,209},{202,184},{215,168} };
+	fillPolygon(rambut6_2, 3, birudonker1);
+	//rambut6_3(t5,s5,z2_2,o2,n2)
+	Point2D_t rambut6_3[5] = { {160,240},{158,174},{173,61},{202,46},{202,184} };
+	fillPolygon(rambut6_3, 5, birudonker1);
+	//rambut6_4(z2_2,o2,c3_2)
+	Point2D_t rambut6_4[3] = { {173,61},{202,46},{173,33} };
+	fillPolygon(rambut6_4, 3, birudonker1);
+	//rambut6_5(s5,j1,l1,m1,f2,a3_2,z2_2)
+	Point2D_t rambut6_5[7] = { {158,174},{155,132},{156,112},{155,99},{155,55},{164,56},{173,61} };
+	fillPolygon(rambut6_5, 7, birudonker1);
+	//rambut6_6(f2,a3_2,b3_2,g2)
+	Point2D_t rambut6_6[4] = { {155,55},{164,56},{164,27},{155,43} };
+	fillPolygon(rambut6_6, 4, birudonker1);
+	//rambut6_7(g2,b3_2,r2,s2,w2)
+	Point2D_t rambut6_7[5] = { {155,43},{164,27},{167,22},{167,-1},{156,-51} };
+	fillPolygon(rambut6_7, 5, birudonker1);
+	//rambut6_8(b3_2,c3_2,o2,p2,q2,r2)
+	Point2D_t rambut6_8[6] = { {164,27},{173,33},{202,46},{227,46},{195,11},{167,22} };
+	fillPolygon(rambut6_8, 6, birudonker1);
+	//rambut6_9(s2,t2,u2,w2)
+	Point2D_t rambut6_9[4] = { {164,-1},{199,-1},{167,-35},{156,-51} };
+	fillPolygon(rambut6_9, 4, birudonker1);
+	//rambut6_8(u2,w2,v2)
+	Point2D_t rambut6_10[3] = { {167,-35},{156,-51},{182,-35} };
+	fillPolygon(rambut6_10, 3, birudonker1);
+
+	//rambut7(k5,l5,m5)
+	Point2D_t rambut7[3] = { {20,304},{96,305},{-88,236} };
+	gradatePolygon(rambut7, 3, gradasibirudonker1);
+	//rambut7_2(l5,o5,n5)
+	Point2D_t rambut7_2[3] = { {96,305},{93,282},{-90,199} };
+	gradatePolygon(rambut7_2, 3, gradasibirudonker1);
+	//rambut7_3(p5,i1,q5)
+	Point2D_t rambut7_3[3] = { {93,268},{94,237},{-88,159} };
+	gradatePolygon(rambut7_3, 3, gradasibirudonker1);
+	//rambut7_4(s5,j1,r5)
+	Point2D_t rambut7_4[3] = { {158,174},{155,132},{120,240} };
+	gradatePolygon(rambut7_4, 3, gradasibirudonker2);
+
+	//telinga1(z2,c3,b3,a4)
+	Point2D_t telinga1[4] = { {-173,61},{-173,33},{-164,27},{-164,56} };
+	fillPolygon(telinga1, 4, cream3);
+
+	//telinga2(z2_2,c3_2,b3_2,a4_2)
+	Point2D_t telinga2[4] = { {173,61},{173,33},{164,27},{164,56} };
+	fillPolygon(telinga2, 4, cream3);
+
+	//wajaha(v,d1,v4,o)
+	Point2D_t wajaha[4] = { {-156,42},{-135,18},{-155,-69},{-156,-38} };
+	fillPolygon(wajaha, 4, cream4);
+	//wajahb(v_2,d1_2,v4_2,o_2)
+	Point2D_t wajahb[4] = { {156,42},{135,18},{155,-69},{156,-38} };
+	fillPolygon(wajahb, 4, cream4);
+
+	//wajah_1a(d1,v4,l4,d4,c4,e1)
+	Point2D_t wajah_1a[6] = { {-135,18},{-155,-69},{-73,-47},{-39,-7},{-40,15},{-48,18} };
+	fillPolygon(wajah_1a, 6, cream4);
+	//wajah_1b(d1_2,v4_2,l4_2,d4_2,c4_2,e1_2)
+	Point2D_t wajah_1b[6] = { {135,18},{155,-69},{73,-47},{39,-7},{40,15},{48,18} };
+	fillPolygon(wajah_1b, 6, cream4);
+
+	//wajah_12a(e1,c4,f1)
+	Point2D_t wajah_12a[3] = { {-48,18},{-40,15},{-23,53} };
+	fillPolygon(wajah_12a, 3, cream4);
+	//wajah_12b(e1_2,c4_2,f1_2)
+	Point2D_t wajah_12b[3] = { {48,18},{40,15},{23,53} };
+	fillPolygon(wajah_12b, 3, cream4);
+
+	//wajah_13a(l4,d4,e4,f4,g4,m4)
+	Point2D_t wajah_13a[6] = { {-73,-47},{-39,-7},{-27,-12},{-14,-14},{0,-14},{-6,-40} };
+	fillPolygon(wajah_13a, 6, cream4);
+	//wajah_13b(l4_2,d4_2,e4_2,f4_2,g4_2,m4_2)
+	Point2D_t wajah_13b[6] = { {73,-47},{39,-7},{27,-12},{14,-14},{0,-14},{6,-40} };
+	fillPolygon(wajah_13b, 6, cream4);
+
+	//wajah_14a(g4,m4,n4,m4_2)
+	Point2D_t wajah_14a[4] = { {0,-14},{-6,-40},{0,-43},{6,-40} };
+	fillPolygon(wajah_14a, 4, cream4);
+
+	//wajah_15a(v4,l4,q4,a4,z4,w4)
+	Point2D_t wajah_15a[6] = { {-155,-69},{-73,-47},{-36,-76},{-64,-163},{-107,-117},{-117,-107} };
+	fillPolygon(wajah_15a, 6, cream4);
+	//wajah_15b(v4_2,l4_2,q4_2,a4_2,z4_2,w4_2)
+	Point2D_t wajah_15b[6] = { {155,-69},{73,-47},{36,-76},{64,-163},{107,-117},{117,-107} };
+	fillPolygon(wajah_15b, 6, cream4);
+
+	//wajah_16a(q4,a4,t4)
+	Point2D_t wajah_16a[3] = { {-36,-76},{-64,-163},{-7,-83} };
+	fillPolygon(wajah_16a, 3, cream4);
+	//wajah_16b(q4_2,a4_2,t4_2)
+	Point2D_t wajah_16b[3] = { {36,-76},{64,-163},{7,-83} };
+	fillPolygon(wajah_16b, 3, cream4);
+
+	//wajah_17a(q4,t4,s4,t4_2,q4_2,r4)
+	Point2D_t wajah_17a[6] = { {-36,-76},{-7,-83},{0,-83},{7,-83},{36,-76},{0,-76} };
+	fillPolygon(wajah_17a, 6, cream4);
+
+	//wajah_18a(a5,t4,u4,b5)
+	Point2D_t wajah_18a[4] = { {-64,-163},{-7,-83},{0,-95},{0,-163} };
+	fillPolygon(wajah_18a, 4, cream4);
+	//wajah_18b(a5_2,t4_2,u4_2,b5_2)
+	Point2D_t wajah_18b[4] = { {64,-163},{7,-83},{0,-95},{0,-163} };
+	fillPolygon(wajah_18b, 4, cream4);
+	
+	//wajah_2a(p,q,r)
+	Point2D_t wajah_2a[3] = { {-156,128},{-156,112},{-142,129} };
+	fillPolygon(wajah_2a, 3, cream4);
+
+	//wajah_3a(q1,r1,t1,s1)
+	Point2D_t wajah_3a[4] = { {-33,128},{0,128},{0,104},{-18,104} };
+	fillPolygon(wajah_3a, 4, cream4);
+	//wajah_31a(r1,q1_2,s1_2,t1)
+	Point2D_t wajah_31a[4] = { {0,128},{33,128},{18,104},{0,104} };
+	fillPolygon(wajah_31a, 4, cream3);
+	
+	//wajah_4a(h1,k1,f5,e5,d5)
+	Point2D_t wajah_4a[5] = { {-49,134},{138,134},{138,143},{121,151},{42,151} };
+	fillPolygon(wajah_4a, 5, cream4);
+	
+	//wajah_41a(h1,c5,d5)
+	Point2D_t wajah_41a[3] = { {-49,134},{42,162},{42,151} };
+	fillPolygon(wajah_41a, 3, cream4);
+	//wajah_42a
+	glColor3f(0.87, 0.67, 0.41);
+	glBegin(GL_POLYGON);
+	glVertex2f(-49., 134.);//h1
+	glColor3f(0.94, 0.76, 0.49);
+	glVertex2f(42., 162.);//c5
+	glVertex2f(94., 237.);//i1
+	glEnd();
+	//wajah_43a(c5,i1,g5)
+	Point2D_t wajah_43a[3] = { {42,162},{94,237},{121,162} };
+	fillPolygon(wajah_43a, 3, cream4);
+	//wajah_44a
+	glColor3f(0.94, 0.76, 0.49);
+	glBegin(GL_POLYGON);
+	glVertex2f(94., 237.);//i1
+	glColor3f(0.87, 0.67, 0.41);
+	glVertex2f(155., 132.);//j1
+	glVertex2f(138., 143.);//f5
+	glVertex2f(121., 162.);//g5
+	glEnd();
+	//wajah_45a(f5,j1,l1,k1)
+	Point2D_t wajah_45a[4] = { {138,143},{155,132},{156,112},{138,134} };
+	fillPolygon(wajah_45a, 4, cream3);
+
+	//wajah_5a(s,t,d3,e3)
+	Point2D_t wajah_5a[4] = { {-134,129},{-157,99},{-132,104},{-112,124} };
+	fillPolygon(wajah_5a, 4, cream4);
+	//wajah_5b(s_2,t_2,d3_2,e3_2)
+	Point2D_t wajah_5b[4] = { {134,129},{157,99},{132,104},{112,124} };
+	fillPolygon(wajah_5b, 4, cream4);
+	
+	//wajah_52a(s,w,f3,e3)
+	Point2D_t wajah_52a[4] = { {-134,129},{-49,128},{-64,124},{-112,124} };
+	fillPolygon(wajah_52a, 4, cream4);
+	//wajah_52b(s_2,w_2,f3_2,e3_2)
+	Point2D_t wajah_52b[4] = { {134,129},{49,128},{64,124},{112,124} };
+	fillPolygon(wajah_52b, 4, cream4);
+
+	//wajah_53a(f3,w,z,g3)
+	Point2D_t wajah_53a[4] = { {-64,124},{-49,128},{-31,98},{-45,104} };
+	fillPolygon(wajah_53a, 4, cream4);
+	//wajah_53b(f3_2,w_2,z_2,g3_2)
+	Point2D_t wajah_53b[4] = { {64,124},{49,128},{31,98},{45,104} };
+	fillPolygon(wajah_53b, 4, cream4);
+	
+	//wajah_54a(g3,z,a1,b1,h3)
+	Point2D_t wajah_54a[5] = { {-45,104},{-31,98},{-31,55},{-50,26},{-45,99} };
+	fillPolygon(wajah_54a, 5, cream4);
+	//wajah_54b(g3_2,z_2,a1_2,b1_2,h3_2)
+	Point2D_t wajah_54b[5] = { {45,104},{31,98},{31,55},{50,26},{45,99} };
+	fillPolygon(wajah_54b, 5, cream4);
+	
+	//wajah_55a(o3,h3,b1,c1)
+	Point2D_t wajah_55a[4] = { {-132,99},{-45,99},{-50,26},{-132,26} };
+	fillPolygon(wajah_55a, 4, cream4);
+	//wajah_55b(o3_2,h3_2,b1_2,c1_2)
+	Point2D_t wajah_55b[4] = { {132,99},{45,99},{50,26},{132,26} };
+	fillPolygon(wajah_55b, 4, cream4);
+	
+	//wajah_56a(t,d3,o3,c1,u)
+	Point2D_t wajah_56a[5] = { {-157,99},{-132,104},{-132,99},{-132,26},{-156,55} };
+	fillPolygon(wajah_56a, 5, cream4);
+	//wajah_56b(t_2,d3_2,o3_2,c1_2,u_2)
+	Point2D_t wajah_56b[5] = { {157,99},{132,104},{132,99},{132,26},{156,55} };
+	fillPolygon(wajah_56b, 5, cream4);
+
+	//kacamata1(q,r,s,t)
+	Point2D_t kacamata1[4] = { {-156,112},{-142,129},{-134,129},{-157,99} };
+	fillPolygon(kacamata1, 4, hitam2);
+
+	//kacamata2(u,c1,d1,v)
+	Point2D_t kacamata2[4] = { {-156,55},{-132,26},{-135,18},{-156,42} };
+	fillPolygon(kacamata2, 4, hitam2);
+
+	//kacamata3(c1,b1,e1,d1)
+	Point2D_t kacamata3[4] = { {-132,26},{-50,26},{-48,18},{-135,18} };
+	fillPolygon(kacamata3, 4, hitam2);
+
+	//kacamata4(b1,a1,f1,e1)
+	Point2D_t kacamata4[4] = { {-50,26},{-31,55},{-23,53},{-48,18} };
+	fillPolygon(kacamata4, 4, hitam2);
+
+	//kacamata5(a1,z,g1,f1)
+	Point2D_t kacamata5[4] = { {-31,55},{-31,98},{-23,96},{-23,53} };
+	fillPolygon(kacamata5, 4, hitam2);
+
+	//kacamata6(w,q1,s1,g1,z)
+	Point2D_t kacamata6[5] = { {-49,128},{-33,128},{-18,104},{-23,96},{-31,98} };
+	fillPolygon(kacamata6, 5, hitam2);
+
+	//kacamata7(w,q1,q1_2,o1,n1,k1,h1)
+	Point2D_t kacamata7[7] = { {-49,128},{-33,128},{33,128},{48,128},{134,128},{138,134},{-49,134} };
+	fillPolygon(kacamata7, 7, hitam2);
+
+	//kacamata8(o1,q1_2,s1_2,w1,p1)
+	Point2D_t kacamata8[5] = { {48,128},{33,128},{18,104},{23,96},{31,98} };
+	fillPolygon(kacamata8, 5, hitam2);
+
+	//kacamata9(w1,p1,a2,z1)
+	Point2D_t kacamata9[4] = { {23,96},{31,98},{31,55},{23,54} };
+	fillPolygon(kacamata9, 4, hitam2);
+
+	//kacamata10(z1,b2,c2,a2)
+	Point2D_t kacamata10[4] = { {23,54},{48,18},{50,26},{31,55} };
+	fillPolygon(kacamata10, 4, hitam2);
+
+	//kacamata11(c2,d2,e2,b2)
+	Point2D_t kacamata11[4] = { {50,26},{132,26},{135,18},{48,18} };
+	fillPolygon(kacamata11, 4, hitam2);
+
+	//kacamata12(d2,f2,g2,e2)
+	Point2D_t kacamata12[4] = { {132,26},{155,55},{155,43},{135,18} };
+	fillPolygon(kacamata12, 4, hitam2);
+
+	//kacamata13(k1,l1,m1,n1)
+	Point2D_t kacamata13[4] = { {138,134},{156,112},{155,99},{134,128} };
+	fillPolygon(kacamata13, 4, hitam2);
+
+	//kacamata14(s1,s1_2,g1_2,g1)
+	Point2D_t kacamata14[4] = { {-18,104},{18,104},{23,96},{-23,96} };
+	fillPolygon(kacamata14, 4, hitam2);
+
+
+	//mata1
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-132., 104.);//d3
+	glVertex2f(-112., 124.);//e3
+	glVertex2f(-112., 117.);//n3
+	glVertex2f(-132., 99.);//o3
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(132., 104.);//d3_2
+	glVertex2f(112., 124.);//e3_2
+	glVertex2f(112., 117.);//n3_2
+	glVertex2f(132., 99.);//o3_2
+	glEnd();
+
+	//mata1_2
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-112., 124.);//e3
+	glVertex2f(-64., 124.);//f3
+	glVertex2f(-70., 119.);//z3
+	glVertex2f(-75., 117.);//v3
+	glVertex2f(-84., 117.);//m3
+	glVertex2f(-112., 117.);//n3
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(112., 124.);//e3_2
+	glVertex2f(64., 124.);//f3_2
+	glVertex2f(70., 119.);//z3_2
+	glVertex2f(75., 117.);//v3_2
+	glVertex2f(84., 117.);//m3_2
+	glVertex2f(112., 117.);//n3_2
+	glEnd();
+
+	//mata1_3
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-84., 117.);//m3
+	glVertex2f(-75., 117.);//v3
+	glVertex2f(-74., 113.);//w3
+	glVertex2f(-84., 109.);//l3
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(84., 117.);//m3_2
+	glVertex2f(75., 117.);//v3_2
+	glVertex2f(74., 113.);//w3_2
+	glVertex2f(84., 109.);//l3_2
+	glEnd();
+
+	//mata1_4
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-84., 109.);//l3
+	glVertex2f(-74., 113.);//w3
+	glVertex2f(-70., 111.);//a4
+	glVertex2f(-76., 102.);//k3
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(84., 109.);//l3_2
+	glVertex2f(74., 113.);//w3_2
+	glVertex2f(70., 111.);//a4_2
+	glVertex2f(76., 102.);//k3_2
+	glEnd();
+
+	//mata1_5
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-70., 111.);//a4
+	glVertex2f(-76., 102.);//k3
+	glVertex2f(-66., 102.);//j3
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(70., 111.);//a4_2
+	glVertex2f(76., 102.);//k3_2
+	glVertex2f(66., 102.);//j3_2
+	glEnd();
+
+	//mata1_6
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-70., 111.);//a4
+	glVertex2f(-66., 102.);//j3
+	glVertex2f(-58., 110.);//i3
+	glVertex2f(-67., 115.);//b4
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(70., 111.);//a4_2
+	glVertex2f(66., 102.);//j3_2
+	glVertex2f(58., 110.);//i3_2
+	glVertex2f(67., 115.);//b4_2
+	glEnd();
+
+	//mata1_7
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(-64., 124.);//f3
+	glVertex2f(-70., 119.);//z3
+	glVertex2f(-67., 115.);//b4
+	glVertex2f(-58., 110.);//i3
+	glVertex2f(-45., 99.);//h3
+	glVertex2f(-45., 104.);//g3
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(64., 124.);//f3_2
+	glVertex2f(70., 119.);//z3_2
+	glVertex2f(67., 115.);//b4_2
+	glVertex2f(58., 110.);//i3_2
+	glVertex2f(45., 99.);//h3_2
+	glVertex2f(45., 104.);//g3_2
+	glEnd();
+
+	//mata2
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(-132., 99.);//o3
+	glVertex2f(-112., 117.);//n3
+	glVertex2f(-84., 117.);//m3
+	glVertex2f(-84., 109.);//l3
+	glEnd();
+
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(132., 99.);//o3_2
+	glVertex2f(112., 117.);//n3_2
+	glVertex2f(84., 117.);//m3_2
+	glVertex2f(84., 109.);//l3_2
+	glEnd();
+
+	//mata2_1
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(-132., 99.);//o3
+	glVertex2f(-84., 109.);//l3
+	glVertex2f(-76., 102.);//k3
+	glEnd();
+
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(132., 99.);//o3_2
+	glVertex2f(84., 109.);//l3_2
+	glVertex2f(76., 102.);//k3_2
+	glEnd();
+
+	//mata2_2
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(-132., 99.);//o3
+	glVertex2f(-76., 102.);//k3
+	glVertex2f(-66., 102.);//j3
+	glVertex2f(-45., 99.);//h3
+	glEnd();
+
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(132., 99.);//o3_2
+	glVertex2f(76., 102.);//k3_2
+	glVertex2f(66., 102.);//j3_2
+	glVertex2f(45., 99.);//h3_2
+	glEnd();
+
+	//mata2_3
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(-66., 102.);//j3
+	glVertex2f(-45., 99.);//h3
+	glVertex2f(-58., 110.);//i3
+	glEnd();
+
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(66., 102.);//j3_2
+	glVertex2f(45., 99.);//h3_2
+	glVertex2f(58., 110.);//i3_2
+	glEnd();
+
+	//mata3
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(-75., 117.);//v3
+	glVertex2f(-74., 113.);//w3
+	glVertex2f(-70., 111.);//a4
+	glVertex2f(-67., 115.);//b4
+	glVertex2f(-70., 119.);//z3
+	glEnd();
+
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(75., 117.);//v3_2
+	glVertex2f(74., 113.);//w3_2
+	glVertex2f(70., 111.);//a4_2
+	glVertex2f(67., 115.);//b4_2
+	glVertex2f(70., 119.);//z3_2
+	glEnd();
+
+	//hidung1
+	glColor3f(0.94, 0.76, 0.49);
+	glBegin(GL_POLYGON);
+	glVertex2f(-23., 96.);//g1
+	glVertex2f(-23., 53.);//f1
+	glVertex2f(-15., 10.);//h4
+	glVertex2f(0., 10.);//i4
+	glVertex2f(15., 10.);//h4_2
+	glVertex2f(23., 54.);//z1
+	glVertex2f(23., 96.);//w1
+	glEnd();
+	//hidung1_2
+	glColor3f(0.94, 0.76, 0.49);
+	glBegin(GL_POLYGON);
+	glVertex2f(-23., 53.);//f1
+	glVertex2f(-15., 10.);//h4
+	glColor3f(0.87, 0.67, 0.41);
+	glVertex2f(-39., -7.);//d4
+	glColor3f(0.87, 0.67, 0.41);
+	glVertex2f(-40., 15.);//c4
+	glEnd();
+	//hidung1_3
+	glColor3f(0.94, 0.76, 0.49);
+	glBegin(GL_POLYGON);
+	glVertex2f(23., 53.);//Z1
+	glVertex2f(15., 10.);//h4_2
+	glColor3f(0.87, 0.67, 0.41);
+	glVertex2f(39., -7.);//d4_2
+	glColor3f(0.87, 0.67, 0.41);
+	glVertex2f(40., 15.);//c4_2
+	glEnd();
+
+	//hidung2
+	glColor3f(0.87, 0.67, 0.41);
+	glBegin(GL_POLYGON);
+	glVertex2f(-39., -7.);//d4
+	glVertex2f(-15., 10.);//h4
+	glVertex2f(0., 10.);//i4
+	glVertex2f(15., 10.);//h4_2
+	glVertex2f(39., -7.);//d4_2
+	glVertex2f(27., -12.);//e4_2
+	glVertex2f(14., -14.);//f4_2
+	glVertex2f(0., -14.);//g4
+	glVertex2f(-14., -14.);//f4
+	glVertex2f(-27., -12.);//e4
+	glEnd();
+
+	//hidung3
+	glColor3f(0.75, 0.52, 0.25);
+	glBegin(GL_POLYGON);
+	glVertex2f(-27., -12.);//e4
+	glVertex2f(-18., -3.);//k4
+	glVertex2f(-5., -3.);//j4
+	glVertex2f(-14., -14.);//f4
+	glEnd();
+
+	//hidung4
+	glColor3f(0.75, 0.52, 0.25);
+	glBegin(GL_POLYGON);
+	glVertex2f(27., -12.);//e4_2
+	glVertex2f(18., -3.);//k4_2
+	glVertex2f(5., -3.);//j4_2
+	glVertex2f(14., -14.);//f4_2
+	glEnd();
+
+	//mulut1
+	glColor3f(0.72, 0.24, 0.24);
+	glBegin(GL_POLYGON);
+	glVertex2f(-73., -47.);//l4
+	glVertex2f(-6., -40.);//m4
+	glVertex2f(0., -43.);//n4
+	glVertex2f(0., -57.);//o4
+	glVertex2f(-13., -57.);//p4
+	glEnd();
+
+	glColor3f(0.72, 0.24, 0.24);
+	glBegin(GL_POLYGON);
+	glVertex2f(73., -47.);//l4_2
+	glVertex2f(6., -40.);//m4_2
+	glVertex2f(0., -43.);//n4
+	glVertex2f(0., -57.);//o4
+	glVertex2f(13., -57.);//p4_2
+	glEnd();
+
+	//mulut2
+	glColor3f(0.83, 0.35, 0.35);
+	glBegin(GL_POLYGON);
+	glVertex2f(-73., -47.);//l4
+	glVertex2f(-13., -57.);//p4
+	glVertex2f(0., -57.);//o4
+	glVertex2f(0., -76.);//r4
+	glVertex2f(-36., -76.);//q4
+	glEnd();
+
+	glColor3f(0.83, 0.35, 0.35);
+	glBegin(GL_POLYGON);
+	glVertex2f(73., -47.);//l4_2
+	glVertex2f(13., -57.);//p4_2
+	glVertex2f(0., -57.);//o4
+	glVertex2f(0., -76.);//r4
+	glVertex2f(36., -76.);//q4_2
+	glEnd();
+
+	//bulu1(t4,t4_2,u4)
+	Point2D_t bulu1[3] = { {-7,-83},{7,-83},{0,-95} };
+	fillPolygon(bulu1, 3, hitam);
+
+	//bulualis1(c5,g5,e5,d5)
+	Point2D_t bulualis1[4] = { {42,162},{121,162},{121,151},{42,151} };
+	fillPolygon(bulualis1, 4, hitam);
+	//bulualis2(g5,f5,e5)
+	Point2D_t bulualis2[3] = { {121,162},{138,143},{121,151} };
+	fillPolygon(bulualis2, 3, hitam);
+
+	//leher1(z4,u5,u6,a5)
+	Point2D_t leher1[4] = { {-107,-117},{-107,-152},{-64,-189},{-64,-163} };
+	fillPolygon(leher1, 4, cream3);
+	//leher1_2(z4_2,u5_2,u6_2,a5_2)
+	Point2D_t leher1_2[4] = { {107,-117},{107,-152},{64,-189},{64,-163} };
+	fillPolygon(leher1_2, 4, cream3);
+
+	//leher2(u5,w5,z5,v5)
+	Point2D_t leher2[4] = { {-107,-152},{-137,-152},{-205,-175},{-107,-175} };
+	fillPolygon(leher2, 4, cream3);
+	//leher2_2(u5_2,w5_2,z5_2,v5_2)
+	Point2D_t leher2_2[4] = { {107,-152},{137,-152},{205,-175},{107,-175} };
+	fillPolygon(leher2_2, 4, cream3);
+
+	//leher3(z5,w6,o6,v5)
+	Point2D_t leher3[4] = { {-205,-175},{-100,-282},{-36,-282},{-107,-175} };
+	fillPolygon(leher3, 4, cream4);
+	//leher3_2(z5_2,w6_2,o6_2,v5_2)
+	Point2D_t leher3_2[4] = { {205,-175},{100,-282},{36,-282},{107,-175} };
+	fillPolygon(leher3_2, 4, cream4);
+
+	//leher4(u5,v5,o6,v6,u6)
+	Point2D_t leher4[5] = { {-107,-152},{-107,-175},{-36,-282},{-19,-282},{-64,-189} };
+	gradatePolygon(leher4, 5, gradasicream3);
+	//leher4_2(u5_2,v5_2,o6_2,v6_2,u6_2)
+	Point2D_t leher4_2[5] = { {107,-152},{107,-175},{36,-282},{19,-282},{64,-189} };
+	gradatePolygon(leher4_2, 5, gradasicream3);
+	
+	//leher5(a5,u6,v6,v6_2,u6_2,a5_2)
+	Point2D_t leher5[6] = { {-64,-163},{-64,-189},{-19,-282},{19,-282},{64,-189},{64,-163} };
+	gradatePolygon(leher5, 6, gradasicream3);
+
+	//leher6(w6,o6,v6,v6_2,o6_2,w6_2,t6)
+	Point2D_t leher6[7] = { {-100,-282},{-36,-282},{-19,-282},{19,-282},{36,-282},{100,-282},{0,-385} };
+	gradatePolygon(leher6, 7, gradasicream4);
+
+	//baju1(c6,a6,z4,w4)
+	Point2D_t baju1[4] = { {-137,-107},{-137,-117},{-107,-117},{-117,-107} };
+	fillPolygon(baju1, 4, birudonker4);
+	//baju1_2(c6_2,a6_2,z4_2,w4_2)
+	Point2D_t baju1_2[4] = { {137,-107},{137,-117},{107,-117},{117,-107} };
+	fillPolygon(baju1_2, 4, birudonker4);
+
+	//baju2(a6,z4,u5,w5)
+	Point2D_t baju2[4] = { {-137,-117},{-107,-117},{-107,-152},{-137,-152} };
+	fillPolygon(baju2, 4, biru2);
+	//baju2_2(a6_2,z4_2,u5_2,w5_2)
+	Point2D_t baju2_2[4] = { {137,-117},{107,-117},{107,-152},{137,-152} };
+	fillPolygon(baju2_2, 4, biru2);
+
+	//baju3(c6,d6,b6,a6)
+	Point2D_t baju3[4] = { {-137,-107},{-268,-150},{-244,-154},{-137,-117} };
+	fillPolygon(baju3, 4, birudonker4);
+	//baju3_2(c6_2,d6_2,b6_2,a6_2)
+	Point2D_t baju3_2[4] = { {137,-107},{268,-150},{244,-154},{137,-117} };
+	fillPolygon(baju3_2, 4, birudonker4);
+
+	//baju4(a6,b6,z5,w5)
+	Point2D_t baju4[4] = { {-137,-117},{-244,-154},{-205,-175},{-137,-152} };
+	fillPolygon(baju4, 4, biru2);
+	//baju4_2(a6_2,b6_2,z5_2,w5_2)
+	Point2D_t baju4_2[4] = { {137,-117},{244,-154},{205,-175},{137,-152} };
+	fillPolygon(baju4_2, 4, biru2);
+
+	//baju5(d6,h6,g6,r6,s6,b6)
+	Point2D_t baju5[6] = { {-268,-150},{-240,-180},{-220,-200},{-10,-413},{-4,-402},{-244,-154} };
+	fillPolygon(baju5, 6, biru4);
+	//baju5_2(d6_2,h6_2,g6_2,r6_2,s6_2,b6_2)
+	Point2D_t baju5_2[6] = { {268,-150},{240,-180},{220,-200},{10,-413},{4,-402},{244,-154} };
+	fillPolygon(baju5_2, 6, biru4);
+
+	//baju6(b6,s6,t6,w6,z5)
+	Point2D_t baju6[5] = { {-244,-154},{-4,-402},{0,-385},{-100,-282},{-205,-175} };
+	fillPolygon(baju6, 5, biru2);
+	//baju6_2(b6_2,s6_2,t6_2,w6_2,z5_2)
+	Point2D_t baju6_2[5] = { {244,-154},{4,-402},{0,-385},{100,-282},{205,-175} };
+	fillPolygon(baju6_2, 5, biru2);
+
+	//baju7(t6,s6,s6_2)
+	Point2D_t baju7[3] = { {0,-385},{-4,-402},{4,-402} };
+	fillPolygon(baju7, 3, biru2);
+
+	//baju8(s6,r6,q6,r6_2,s6_2)
+	Point2D_t baju8[5] = { {-4,-402},{-10,-413},{0,-413},{10,-413},{4,-402} };
+	fillPolygon(baju8, 5, biru4);
+
+	//baju9(d6,e6,h6)
+	Point2D_t baju9[3] = { {-268,-150},{-268,-188},{-240,-180} };
+	fillPolygon(baju9, 3, biru2);
+	//baju9_2(d6_2,e6_2,h6_2)
+	Point2D_t baju9_2[3] = { {268,-150},{268,-188},{240,-180} };
+	fillPolygon(baju9_2, 3, biru2);
+
+	//baju10(h6,e6,f6,i6,g6)
+	Point2D_t baju10[5] = { {-240,-180},{-268,-188},{-344,-217},{-333,-241},{-220,-200} };
+	fillPolygon(baju10, 5, birudonker4);
+	//baju10_2(h6_2,e6_2,f6_2,i6_2,g6_2)
+	Point2D_t baju10_2[5] = { {240,-180},{268,-188},{344,-217},{333,-241},{220,-200} };
+	fillPolygon(baju10_2, 5, birudonker4);
+
+	//baju11(g6,i6,n6,m6,z6,r6)
+	Point2D_t baju11[6] = { {-220,-200},{-333,-241},{-283,-367},{-236,-495},{-10,-495},{-10,-413} };
+	fillPolygon(baju11, 6, birudonker3);
+	//baju11_2(g6_2,i6_2,n6_2,m6_2,z6_2,r6_2)
+	Point2D_t baju11_2[6] = { {220,-200},{333,-241},{283,-367},{236,-495},{10,-495},{10,-413} };
+	fillPolygon(baju11_2, 6, birudonker3);
+
+	//baju12(r6,q6,r6_2,z6_2,p6,z6)
+	Point2D_t baju12[6] = { {-10,-413},{0,-413},{10,-413},{10,-495},{0,-495},{-10,-495} };
+	fillPolygon(baju12, 6, biru4);
+
+	//baju13(f6,i6,n6,j6)
+	Point2D_t baju13[4] = { {-344,-217},{-333,-241},{-283,-367},{-430,-308} };
+	gradatePolygon(baju13, 4, gradasibiru1);
+	//baju13_2(f6_2,i6_2,n6_2,j6_2)
+	Point2D_t baju13_2[4] = { {344,-217},{333,-241},{283,-367},{430,-308} };
+	gradatePolygon(baju13_2, 4, gradasibiru1);
+
+	//baju14(j6,n6,l6,k6)
+	Point2D_t baju14[4] = { {-430,-308},{-283,-367},{-288,-495},{-454,-495} };
+	gradatePolygon(baju14, 4, gradasibiru2);
+	//baju14_2(j6_2,n6_2,l6_2,k6_2)
+	Point2D_t baju14_2[4] = { {430,-308},{283,-367},{288,-495},{454,-495} };
+	gradatePolygon(baju14_2, 4, gradasibiru2);
+
+	//baju15(n6,m6,l6)
+	Point2D_t baju15[3] = { {-283,-367},{-236,-495},{-288,-495} };
+	gradatePolygon(baju15, 3, gradasibiru3);
+	//baju15_2(n6_2,m6_2,l6_2)
+	Point2D_t baju15_2[3] = { {283,-367},{236,-495},{288,-495} };
+	gradatePolygon(baju15_2, 3, gradasibiru3);
+
+	//segitiga1
+	glColor3f(0, 0.54, 0.54);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-450., -50.);//a7
+	glVertex2f(-300., -50.);//b7
+	glVertex2f(-375., 100.);//c7
+	glVertex2f(-450., -50.);//a7
+	glEnd();
+
+	glColor3f(0, 0.54, 0.54);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(450., -50.);//a7_2
+	glVertex2f(300., -50.);//b7_2
+	glVertex2f(375., 100.);//c7_2
+	glEnd();
+
+	//segitiga2
+	glColor3f(0, 0.54, 0.54);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-300., 50.);//d7
+	glVertex2f(-349., 129.);//e7
+	glVertex2f(-249., 129.);//c7
+	glVertex2f(-300., 50.);//d7
+	glEnd();
+
+	glColor3f(0, 0.54, 0.54);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(300., 50.);//d7_2
+	glVertex2f(349., 129.);//e7_2
+	glVertex2f(249., 129.);//c7_2
+	glEnd();
+
+	//segitiga3
+	glColor3f(0, 0.54, 0.54);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-420., 51.);//g7
+	glVertex2f(-330., 51.);//h7
+	glVertex2f(-375., 150.);//i7
+	glVertex2f(-420., 51.);//g7
+	glEnd();
+
+	glColor3f(0, 0.54, 0.54);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(420., 51.);//g7_2
+	glVertex2f(330., 51.);//h7_2
+	glVertex2f(375., 150.);//i7_2
+	glEnd();
+
+	//segitiga4
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-350., 150.);//j7
+	glVertex2f(-400., 250.);//k7
+	glVertex2f(-300., 250.);//l7
+	glVertex2f(-350., 150.);//j7
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(350., 150.);//j7_2
+	glVertex2f(400., 250.);//k7_2
+	glVertex2f(300., 250.);//l7_2
+	glEnd();
+
+	//segitiga5
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-450., 100.);//m7
+	glVertex2f(-400., 200.);//n7
+	glVertex2f(-450., 200.);//o7
+	glVertex2f(-450., 100.);//m7
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(450., 100.);//m7_2
+	glVertex2f(400., 200.);//n7_2
+	glVertex2f(450., 200.);//o7_2
+	glEnd();
+
+	//segitiga6
+	glColor3f(0, 1, 0.49);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-420., 220.);//p7
+	glVertex2f(-480., 260.);//q7
+	glVertex2f(-420., 280.);//r7
+	glVertex2f(-420., 220.);//p7
+	glEnd();
+
+	glColor3f(0, 1, 0.49);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(420., 220.);//p7_2
+	glVertex2f(480., 260.);//q7_2
+	glVertex2f(420., 280.);//r7_2
+	glEnd();
+
+	//segitiga6
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-360., 220.);//s7
+	glVertex2f(-420., 340.);//t7
+	glVertex2f(-300., 340.);//u7
+	glVertex2f(-360., 220.);//s7
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(360., 220.);//s7_2
+	glVertex2f(420., 340.);//t7_2
+	glVertex2f(300., 340.);//u7_2
+	glEnd();
+
+	//segitiga7
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-360., 320.);//v7
+	glVertex2f(-380., 360.);//w7
+	glVertex2f(-340., 360.);//z7
+	glVertex2f(-360., 320.);//v7
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(360., 320.);//v7_2
+	glVertex2f(380., 360.);//w7_2
+	glVertex2f(340., 360.);//z7_2
+	glEnd();
+
+	//segitiga8
+	glColor3f(0, 0.8, 0.81);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-320., 360.);//a8
+	glVertex2f(-200., 420.);//b8
+	glVertex2f(-260., 480.);//c8
+	glVertex2f(-320., 360.);//a8
+	glEnd();
+
+	glColor3f(0, 0.8, 0.81);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(320., 360.);//a8_2
+	glVertex2f(200., 420.);//b8_2
+	glVertex2f(260., 480.);//c8_2
+	glEnd();
+
+	//segitiga9
+	glColor3f(0, 0.8, 0.81);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-350., 400.);//d8
+	glVertex2f(-430., 428.);//e8
+	glVertex2f(-379., 479.);//f8
+	glVertex2f(-350., 400.);//d8
+	glEnd();
+
+	glColor3f(0, 0.8, 0.81);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(350., 400.);//d8_2
+	glVertex2f(430., 428.);//e8_2
+	glVertex2f(379., 479.);//f8_2
+	glEnd();
+}
+
+void display(void)
+{  //clear screen  
+	glClear(GL_COLOR_BUFFER_BIT);
+	userdraw();
+	glutSwapBuffers();
+}
+ 
+
+int main(int argc, char **argv)
+{
+	glutInit(&argc, argv);//Inisialisasi Toolkit  
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+	//glutInitWindowPosition(0,0);  
+	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(480, 480);
+	glutCreateWindow("UTS-Krisna Bayu Aditya Nurcahyo");
+	glClearColor(1, 0.58, 0.47, 0);
+	gluOrtho2D(-500., 500., -500., 500.);
+	glutIdleFunc(display);
+	glutDisplayFunc(display);
+	glutMainLoop();
+	return 0;
+}
